@@ -10,3 +10,6 @@ variable "EC2SSM" {
   type    = string
   default = "AmazonEC2RoleforSSM-Diaz"
 }
+variable "Home_IP" {
+  default = "71.206.46.139/32"
+}

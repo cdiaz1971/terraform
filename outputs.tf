@@ -21,11 +21,7 @@ output "public_subnets" {
   value       = module.vpc.public_subnets
 }
 
-# NAT gateways
-output "nat_public_ips" {
-  description = "List of public Elastic IPs created for AWS NAT Gateway"
-  value       = module.vpc.nat_public_ips
-}
+
 
 # AZs
 output "azs" {
@@ -35,6 +31,9 @@ output "azs" {
 
 output "public_ip" {
   description = "Public IP of instance"
-  value       = aws_instance.ubuntu-01.public_ip
+  value       = aws_instance.ubuntu-web.public_ip
 }
-
+output "workspace" {
+  description = "Workspace where apply was run"
+  value       = terraform.workspace
+}

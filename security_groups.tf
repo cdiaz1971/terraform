@@ -1,14 +1,21 @@
-resource "aws_security_group" "ssh_sg" {
-  name        = "SSH"
-  description = " Allow Connections via ssh"
+resource "aws_security_group" "home_sg" {
+  name        = "From_Home"
+  description = " Allow Connections from home"
   vpc_id      = module.vpc.vpc_id
 
   ingress {
-    description = "Access from Home"
+    description = "SSH Access from Home"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["71.206.46.139/32"]
+    cidr_blocks = [var.Home_IP]
+  }
+  ingress {
+    description = "HTTP Access from Home"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = [var.Home_IP]
   }
 
   egress {
