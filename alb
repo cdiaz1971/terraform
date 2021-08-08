@@ -1,7 +1,0 @@
-resource "aws_alb" "diaz-aws-alb" {
-  name               = "diaz-aws-elb"
-  internal           = "false"
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.home_sg.id]
-  subnets            = [module.vpc.public_subnets[0]]
-}
