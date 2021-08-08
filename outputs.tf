@@ -33,7 +33,15 @@ output "public_ip" {
   description = "Public IP of instance"
   value       = aws_instance.ubuntu-web.public_ip
 }
+output "alb-sg" {
+  description = "id of alb sg"
+  value       = aws_security_group.from-alb.id
+}
 output "workspace" {
   description = "Workspace where apply was run"
   value       = terraform.workspace
+}
+output "ALB_DNS" {
+  description = "DNS of ALB"
+  value       = module.alb.lb_dns_name
 }
