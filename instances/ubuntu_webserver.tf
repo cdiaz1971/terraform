@@ -1,10 +1,15 @@
+module "vpc"{
+  source = "../vpc"
+}
+
+
 resource "aws_instance" "ubuntu-web" {
   ami                    = var.ubuntu-ami
   instance_type          = "t2.micro"
   iam_instance_profile   = var.EC2SSM
   subnet_id              = module.vpc.public_subnets[0]
   key_name               = var.main-key
-  vpc_security_group_ids = [aws_security_group.from-alb.id, aws_security_group.home_sg.id]
+  vpc_security_group_ids = [module.vpc.security_group_id, module.vpc.security_alb_id]
   root_block_device {
     delete_on_termination = true
     volume_size           = 30

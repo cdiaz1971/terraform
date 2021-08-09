@@ -28,12 +28,16 @@ output "azs" {
   description = "A list of availability zones spefified as argument to this module"
   value       = module.vpc.azs
 }
-
-output "public_ip" {
-  description = "Public IP of instance"
-  value       = aws_instance.ubuntu-web.public_ip
+output "security_group_id" {
+  description = "Id of home_sg"
+  value       = aws_security_group.home_sg.id
 }
-output "alb-sg" {
+output "security_alb_id" {
+  description = "ID of alb sg"
+  value       = aws_security_group.from-alb.id
+}
+
+/* output "alb-sg" {
   description = "id of alb sg"
   value       = aws_security_group.from-alb.id
 }
@@ -45,7 +49,4 @@ output "ALB_DNS" {
   description = "DNS of ALB"
   value       = module.alb.lb_dns_name
 }
-output "public_ip_jenkins" {
-  description = "Public IP of instance"
-  value       = aws_instance.ubuntu-jenkins.public_ip
-}
+ */
