@@ -12,8 +12,8 @@ resource "aws_security_group" "home_sg" {
   }
   ingress {
     description = "HTTP Access from Home"
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = [var.Home_IP]
   }

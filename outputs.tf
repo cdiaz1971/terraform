@@ -45,3 +45,7 @@ output "ALB_DNS" {
   description = "DNS of ALB"
   value       = module.alb.lb_dns_name
 }
+output "public_ip_jenkins" {
+  description = "Public IP of instance"
+  value       = aws_instance.ubuntu-jenkins.public_ip
+}
