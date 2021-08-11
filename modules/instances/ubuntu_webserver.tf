@@ -37,7 +37,7 @@ resource "aws_instance" "ubuntu-web" {
   }
 
    provisioner "local-exec" {
-    command = "ansible-playbook  -i ${aws_instance.ubuntu-web.public_ip}, --private-key ${local.private_key_path} apache.yaml"
+    command = "ansible-playbook  -i ${aws_instance.ubuntu-web.public_ip}, --private-key ${local.private_key_path} ./apache.yml"
   }
 
 
