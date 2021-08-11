@@ -11,8 +11,8 @@ variable "EC2SSM" {
   default = "AmazonEC2RoleforSSM-Diaz"
 }
 variable "puplic-subnet-id" {
-  
+
 }
 variable "web_security_group" {
-  
+
 }
