@@ -1,9 +1,3 @@
-locals {
-  ssh_user         = "ubuntu"
-  key_name         = "DIAZ-AWS"
-  private_key_path = "~/DIAZ-AWS.pem"
-}
-
 resource "aws_instance" "ubuntu-web" {
   ami                    = var.ubuntu-ami
   instance_type          = "t2.micro"
@@ -24,23 +18,7 @@ resource "aws_instance" "ubuntu-web" {
 
   }
 
-  provisioner "remote-exec" {
-    inline = ["echo 'Wait until SSH is ready'"]
-
-    connection {
-      type        = "ssh"
-      user        = local.ssh_user
-      private_key = file(local.private_key_path)
-      host        = aws_instance.ubuntu-web.public_ip
-
-    }
-  }
-
-  provisioner "local-exec" {
-    command = "ansible-playbook  -i ${aws_instance.ubuntu-web.public_ip}, --private-key ${local.private_key_path} ./apache.yml"
-  }
-
-
+  
 
 
 }
