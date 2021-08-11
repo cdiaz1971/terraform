@@ -10,3 +10,9 @@ variable "EC2SSM" {
   type    = string
   default = "AmazonEC2RoleforSSM-Diaz"
 }
+variable "puplic-subnet-id" {
+  
+}
+variable "web_security_group" {
+  
+}
