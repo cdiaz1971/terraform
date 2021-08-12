@@ -16,3 +16,6 @@ variable "puplic-subnet-id" {
 variable "web_security_group" {
 
 }
+variable "instance_name" {
+  
+}
