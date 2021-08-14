@@ -8,9 +8,9 @@ output "public_subnets" {
 }
 output "instance_IP" {
   description = "Instance IP"
-  value       = module.webserver.public_ip_address
+  value       = module.cool_instance.public_ip_address
 }
-output "instance2_IP" {
+/* output "instance2_IP" {
   description = "Instance IP"
   value       = module.webserver2.public_ip_address
-}
+} */
