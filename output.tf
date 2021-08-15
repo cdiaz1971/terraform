@@ -12,5 +12,5 @@ output "public_subnets" {
 } */
 output "instance2_IP" {
   description = "Instance IP"
-  value       = module.webserver.public_ip_address
+  value       = module.webserver[*].public_ip_address
 }
