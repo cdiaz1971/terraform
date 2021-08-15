@@ -1,4 +1,7 @@
 ---
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
 - name: Ensure Apache is at the latest version
   apt:
     name: apache2

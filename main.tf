@@ -10,10 +10,12 @@ module "vpc" {
   source = "./modules/vpc"
 
 }
-/* module "webserver" {
+ module "webserver" {
   source             = "./modules/instances"
   puplic-subnet-id   = module.vpc.public_subnets[1]
   web_security_group = module.vpc.security_group_id
+  instance_name = "webserver1"
+  #count = 2
 }
 resource "null_resource" "apache" {
   provisioner "remote-exec" {
@@ -33,15 +35,17 @@ resource "null_resource" "apache" {
   }
 }
 
- */
-/* module "webserver2" {
+/*  
+ module "webserver2" {
   source             = "./modules/instances"
   puplic-subnet-id   = module.vpc.public_subnets[1]
   web_security_group = module.vpc.security_group_id
-} */
+} 
+
+
 module "cool_instance" {
   source             = "./modules/instances"
   puplic-subnet-id   = module.vpc.public_subnets[1]
   web_security_group = module.vpc.security_group_id
   instance_name      = "Pete"
-}
+} */
