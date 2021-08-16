@@ -18,7 +18,7 @@ resource "aws_instance" "instance_template" {
 
   }
 
-  
+
 
 
 }

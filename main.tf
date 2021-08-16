@@ -10,12 +10,12 @@ module "vpc" {
   source = "./modules/vpc"
 
 }
- module "webserver" {
+module "webserver" {
   source             = "./modules/instances"
   puplic-subnet-id   = module.vpc.public_subnets[1]
   web_security_group = module.vpc.security_group_id
-  instance_name = "webserver"
-  count = 2
+  instance_name      = "webserver"
+  count              = 2
 }
 resource "null_resource" "apache" {
   provisioner "remote-exec" {
@@ -31,7 +31,7 @@ resource "null_resource" "apache" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook  -i ${module.webserver[0].public_ip_address}, --private-key ${local.private_key_path} ./apache.yml && ansible-playbook  -i ${module.webserver[1].public_ip_address}, --private-key ${local.private_key_path} ./apache.yml " 
+    command = "ansible-playbook  -i ${module.webserver[0].public_ip_address}, --private-key ${local.private_key_path} ./apache.yml && ansible-playbook  -i ${module.webserver[1].public_ip_address}, --private-key ${local.private_key_path} ./apache.yml "
   }
 }
 
