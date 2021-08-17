@@ -11,13 +11,14 @@ module "vpc" {
 
 }
 module "webserver" {
+  for_each           = toset(var.web_name)
   source             = "./modules/instances"
   puplic-subnet-id   = module.vpc.public_subnets[1]
   web_security_group = module.vpc.security_group_id
-  instance_name      = "webserver"
-  count              = 2
+  instance_name      = each.value
+
 }
-resource "null_resource" "apache" {
+/* resource "null_resource" "apache" {
   provisioner "remote-exec" {
     inline = ["echo 'Wait until SSH is ready'"]
 
@@ -33,19 +34,5 @@ resource "null_resource" "apache" {
   provisioner "local-exec" {
     command = "ansible-playbook  -i ${module.webserver[0].public_ip_address}, --private-key ${local.private_key_path} ./apache.yml && ansible-playbook  -i ${module.webserver[1].public_ip_address}, --private-key ${local.private_key_path} ./apache.yml "
   }
-}
-
-/*  
- module "webserver2" {
-  source             = "./modules/instances"
-  puplic-subnet-id   = module.vpc.public_subnets[1]
-  web_security_group = module.vpc.security_group_id
-} 
-
-
-module "cool_instance" {
-  source             = "./modules/instances"
-  puplic-subnet-id   = module.vpc.public_subnets[1]
-  web_security_group = module.vpc.security_group_id
-  instance_name      = "Pete"
 } */
+
