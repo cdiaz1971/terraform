@@ -9,7 +9,7 @@ resource "aws_instance" "instance_template" {
   ami                    = var.ubuntu-ami
   instance_type          = "t2.micro"
   iam_instance_profile   = var.EC2SSM
-  subnet_id              = var.puplic-subnet-id
+  subnet_id              = var.public-subnet-id
   key_name               = var.main-key
   vpc_security_group_ids = [var.web_security_group]
   tags = {
