@@ -13,8 +13,8 @@ module "vpc" {
 module "webserver" {
   for_each           = toset(var.web_name)
   source             = "./modules/instances"
-  public-subnet-id   = module.vpc.public_subnets[1]
+  public-subnet-id   = module.vpc.public_subnets[each.value]
   web_security_group = module.vpc.security_group_id
-  instance_name      = each.value
+  instance_name      = join("",["web-0", each.value])
 
 }
