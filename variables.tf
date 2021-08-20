@@ -3,6 +3,6 @@ variable "web_name" {
   default = ["1", "2"]
 }
 variable "subnet_no" {
-  type = list(number)
+  type    = list(number)
   default = ["1", "2"]
 }

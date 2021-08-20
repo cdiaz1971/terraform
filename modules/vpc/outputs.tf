@@ -28,7 +28,7 @@ output "azs" {
   description = "A list of availability zones spefified as argument to this module"
   value       = module.vpc.azs
 }
-output "security_group_id" {
+output "security_group_home_sg" {
   description = "Id of home_sg"
   value       = aws_security_group.home_sg.id
 }

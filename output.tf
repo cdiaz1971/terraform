@@ -11,3 +11,10 @@ output "instance2_IP" {
   description = "Instance IP"
   value       = module.webserver[*]
 }
+output "alb_sg" {
+  description = "ALB security Group ID"
+  value       = module.vpc.security_alb_id
+}
+output "instance_id" {
+  value = module.webserver[1].instance_id
+}
