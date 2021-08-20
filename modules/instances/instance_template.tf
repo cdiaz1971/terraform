@@ -11,7 +11,7 @@ resource "aws_instance" "instance_template" {
   iam_instance_profile   = var.EC2SSM
   subnet_id              = var.public-subnet-id
   key_name               = var.main-key
-  vpc_security_group_ids = [var.web_security_group]
+  vpc_security_group_ids = [var.web_security_group, var.from_home_security_group]
   tags = {
     Name = var.instance_name
   }

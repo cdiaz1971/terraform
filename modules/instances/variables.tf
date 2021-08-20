@@ -16,6 +16,9 @@ variable "public-subnet-id" {
 variable "web_security_group" {
 
 }
+variable "from_home_security_group" {
+
+}
 variable "instance_name" {
 
 }

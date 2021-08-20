@@ -4,5 +4,5 @@ output "public_ip_address" {
 }
 output "instance_id" {
   description = "instance ID"
-  value = aws_instance.instance_template.id
+  value       = aws_instance.instance_template.id
 }
