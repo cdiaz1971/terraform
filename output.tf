@@ -15,6 +15,7 @@ output "alb_sg" {
   description = "ALB security Group ID"
   value       = module.vpc.security_alb_id
 }
-output "instance_id" {
-  value = module.webserver[1].instance_id
+output "alb_dns" {
+  description = "public DNS of ALB"
+  value       = module.alb.alb_dns
 }
