@@ -22,10 +22,10 @@ module "webserver" {
 }
 module "alb" {
   source                       = "./modules/load_balancers"
-  alb_name                     = "ALB1"
+  alb_name                     = "alb-01"
   vpc_id                       = module.vpc.vpc_id
   alb_sn                       = module.vpc.public_subnets[1]
-  alb2_sn                      = module.vpc.public_subnets[2]
+  alb2_sn                      = module.vpc.public_subnets[0]
   alb_sg                       = module.vpc.security_group_home_sg
   target_instance_instance_id1 = module.webserver[1].instance_id
   target_instance_instance_id2 = module.webserver[2].instance_id
