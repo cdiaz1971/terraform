@@ -12,7 +12,7 @@ module "vpc" {
 }
 module "webserver" {
   for_each = toset(var.web_name)
-  source   = "./modules/instances"
+  source   = "./modules/web-servers"
 
   public-subnet-id         = module.vpc.public_subnets[each.value - 1]
   web_security_group       = module.vpc.security_alb_id
@@ -32,4 +32,5 @@ module "alb" {
 
 
 }
- 
+
+
