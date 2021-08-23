@@ -7,9 +7,9 @@ output "public_subnets" {
   value       = module.vpc.public_subnets
 }
 
-output "instance2_IP" {
+output "instance_IP" {
   description = "Instance IP"
-  value       = module.webserver[*]
+  value       = module.webserver[*].public_ip_address
 }
 output "alb_sg" {
   description = "ALB security Group ID"
@@ -18,4 +18,7 @@ output "alb_sg" {
 output "alb_dns" {
   description = "public DNS of ALB"
   value       = module.alb.alb_dns
+}
+output "jump_server_ip" {
+  value = module.jump-server
 }

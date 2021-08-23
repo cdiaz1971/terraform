@@ -1,3 +1,2 @@
 - Create a server on private subnet
-- jump server
 - snapshot schedule

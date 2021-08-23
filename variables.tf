@@ -1,5 +1,5 @@
 variable "web_name" {
-  type    = list(string)
+  type    = list
   default = ["1", "2"]
 }
 variable "subnet_no" {
