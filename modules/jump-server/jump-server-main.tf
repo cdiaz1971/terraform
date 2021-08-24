@@ -27,7 +27,9 @@ resource "aws_instance" "jump_server" {
 
 resource "null_resource" "apt-update" {
   provisioner "remote-exec" {
-    inline = ["echo 'Wait until SSH is ready'"]
+    inline = ["echo 'Wait until SSH is ready'",
+      "sudo hostnamectl set-hostname ${var.instance_name}"
+    ]
 
     connection {
       type        = "ssh"
@@ -39,5 +41,6 @@ resource "null_resource" "apt-update" {
   }
   provisioner "local-exec" {
     command = "ansible-playbook  -i ${aws_instance.jump_server.public_ip}, --private-key ${local.private_key_path} ./apt.yml"
+
   }
 }

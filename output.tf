@@ -15,10 +15,10 @@ output "alb_sg" {
   description = "ALB security Group ID"
   value       = module.vpc.security_alb_id
 }
-output "alb_dns" {
+/* output "alb_dns" {
   description = "public DNS of ALB"
   value       = module.alb.alb_dns
-}
+} */
 output "jump_server_ip" {
   value = module.jump-server
 }
