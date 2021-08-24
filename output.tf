@@ -22,3 +22,6 @@ output "alb_sg" {
 output "jump_server_ip" {
   value = module.jump-server
 }
+output "image_id" {
+  value = module.jump-server.image_id
+}
