@@ -7,17 +7,17 @@ locals {
   private_key_path = "~/DIAZ-AWS.pem"
 }
 module "vpc" {
-  source          = "./modules/vpc"
-  vpc_cidr        = "10.0.0.0/16"
-  vpc_name        = "First_VPC"
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
+  source          = "../modules/vpc"
+  vpc_cidr        = "10.1.0.0/16"
+  vpc_name        = "Second_VPC"
+  private_subnets = ["10.1.1.0/24", "10.1.2.0/24"]
+  public_subnets  = ["10.1.101.0/24", "10.1.102.0/24"]
 
 }
 module "webserver" {
   #for_each = toset(var.web_name)
   count  = 1
-  source = "./modules/web-servers"
+  source = "../modules/web-servers"
 
   public-subnet-id         = module.vpc.public_subnets[count.index]
   web_security_group       = module.vpc.security_alb_id
@@ -40,11 +40,11 @@ module "webserver" {
 
 module "jump-server" {
 
-  source = "./modules/jump-server"
+  source = "../modules/jump-server"
 
   public-subnet-id         = module.vpc.public_subnets[0]
   from_home_security_group = module.vpc.security_group_home_sg
-  instance_name            = "diaz-jump-01"
+  instance_name            = "diaz-dev-jump-01"
 
 }
 

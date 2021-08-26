@@ -13,3 +13,15 @@ variable "EC2SSM" {
 variable "Home_IP" {
   default = "71.206.46.139/32"
 }
+variable "vpc_cidr" {
+
+}
+variable "vpc_name" {
+
+}
+variable "public_subnets" {
+
+}
+variable "private_subnets" {
+
+}
