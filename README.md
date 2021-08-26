@@ -1,1 +1,1 @@
-Experimenting and learning Terraform with some ansible as well.
+ Experimenting  with Terraform with some ansible as well.
